@@ -35,6 +35,41 @@ class ContainerTest extends TestCase
         $container = new Container();
         $container['test'] = 'testString';
 
-        $this->assertSame('testString', $container['test']);
+        $this->assertSame('testString', $container->get('test'));
+    }
+
+    public function testLambdaFunctionsLoadLazily()
+    {
+        $container = new Container();
+        $container['lazy-load'] = function () {
+            $this->fail();
+        };
+        $container['test'] = 'test';
+
+        $container->get('test');
+    }
+
+    public function testLambdaFunctionOnlyCalledOnce()
+    {
+        $container = new Container();
+        $counter = 0;
+        $container['function'] = function () use (&$counter) {
+            $counter++;
+            return 'test';
+        };
+
+        $this->assertSame('test', $container->get('test'));
+        $this->assertSame('test', $container->get('test'));
+        $this->assertSame(1, $counter);
+    }
+
+    public function testConstructorIsASetter()
+    {
+        $container = new Container([
+            'test' => 'testInput'
+        ]);
+
+        $this->assertTrue($container->has('test'));
+        $this->assertSame('testInput', $container->get('test'));
     }
 }
