@@ -11,8 +11,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Miro\\Container": "src/",
-            "Miro\\Container\\Test": "tests/src/"
+            "Miro\\Container\\": "src/",
+            "Miro\\Container\\Test\\": "tests/src/"
         }
     },
     "require": {
