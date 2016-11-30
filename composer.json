@@ -10,7 +10,7 @@
         }
     ],
     "autoload": {
-        "PSR-4": {
+        "psr-4": {
             "Miro\\Container": "src/",
             "Miro\\Container\\Test": "tests/src/"
         }
