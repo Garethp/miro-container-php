@@ -2,10 +2,10 @@
 
 namespace Miro\Container;
 
-use Interop\Container\ContainerInterface;
 use Miro\Container\Exception\NotFoundException;
+use Psr\Container\ContainerInterface;
 
-class Container implements ContainerInterface, \ArrayAccess
+class Container implements ContainerInterface, \Interop\Container\ContainerInterface, \ArrayAccess
 {
     private $container = [];
     private $values = [];
