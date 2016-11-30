@@ -3,7 +3,7 @@
 namespace Miro\Container\Test;
 
 use Interop\Container\ContainerInterface;
-use Miro\Container;
+use Miro\Container\Container;
 use PHPUnit\Framework\TestCase;
 
 class ContainerTest extends TestCase
@@ -58,8 +58,8 @@ class ContainerTest extends TestCase
             return 'test';
         };
 
-        $this->assertSame('test', $container->get('test'));
-        $this->assertSame('test', $container->get('test'));
+        $this->assertSame('test', $container->get('function'));
+        $this->assertSame('test', $container->get('function'));
         $this->assertSame(1, $counter);
     }
 
