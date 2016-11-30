@@ -14,6 +14,7 @@ class ContainerTest extends TestCase
         $container = new Container();
 
         $this->assertInstanceOf(ContainerInterface::class, $container);
+        $this->assertInstanceOf(\Psr\Container\ContainerInterface::class, $container);
     }
 
     public function testHasIsFalseFirst()
@@ -78,6 +79,7 @@ class ContainerTest extends TestCase
     {
         $this->expectException(NotFoundException::class);
         $this->expectException(\Interop\Container\Exception\NotFoundException::class);
+        $this->expectException(\Psr\Container\Exception\NotFoundException::class);
 
         $container = new Container();
         $container->get('test');
