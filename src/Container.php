@@ -3,13 +3,12 @@
 namespace Miro\Container;
 
 use Interop\Container\ContainerInterface;
+use Miro\Container\Exception\NotFoundException;
 
 class Container implements ContainerInterface, \ArrayAccess
 {
-    /**
-     * @var ValueInterface[]
-     */
     private $container = [];
+    private $values = [];
 
     public function __construct(array $values = [])
     {
@@ -20,15 +19,21 @@ class Container implements ContainerInterface, \ArrayAccess
 
     public function get($id)
     {
-        return $this->container[$id]->getValue();
+        if (!$this->has($id)) {
+            throw new NotFoundException();
+        }
+
+        if (!isset($this->values[$id])) {
+            $this->values[$id] = $this->container[$id]();
+        }
+
+        return $this->values[$id];
     }
 
     private function set($index, $value)
     {
-        if (is_callable($value)) {
-            $value = new FactoryValue($value);
-        } else {
-            $value = new ScalarValue($value);
+        if (!is_callable($value)) {
+            $this->values[$index] = $value;
         }
 
         $this->container[$index] = $value;

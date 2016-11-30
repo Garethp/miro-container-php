@@ -4,6 +4,7 @@ namespace Miro\Container\Test;
 
 use Interop\Container\ContainerInterface;
 use Miro\Container\Container;
+use Miro\Container\Exception\NotFoundException;
 use PHPUnit\Framework\TestCase;
 
 class ContainerTest extends TestCase
@@ -71,5 +72,14 @@ class ContainerTest extends TestCase
 
         $this->assertTrue($container->has('test'));
         $this->assertSame('testInput', $container->get('test'));
+    }
+
+    public function testGettingNonExistentKeyThrowsException()
+    {
+        $this->expectException(NotFoundException::class);
+        $this->expectException(\Interop\Container\Exception\NotFoundException::class);
+
+        $container = new Container();
+        $container->get('test');
     }
 }
