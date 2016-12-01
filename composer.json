@@ -12,8 +12,8 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Miro\\Container\\": "src/",
-            "Miro\\Container\\Test\\": "tests/src/"
+            "Miro\\": "src/",
+            "Miro\\Test\\": "tests/src/"
         }
     },
     "require": {
@@ -25,7 +25,7 @@
         "squizlabs/php_codesniffer": "~2.3"
     },
     "scripts": {
-        "cs": "vendor\\bin\\phpcs --standard=PSR-2 -np src/ tests/",
-        "cbf": "vendor\\bin\\phpcbf --standard=PSR-2 -np src/ tests/"
+        "cs": "vendor/bin/phpcs --standard=PSR2 -np src/ tests/",
+        "cbf": "vendor/bin/phpcbf --standard=PSR2 -np src/ tests/"
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Miro\Container\Test;
+namespace Miro\Test;
 
 use Interop\Container\ContainerInterface;
-use Miro\Container\Container;
+use Miro\Container;
 use Miro\Container\Exception\NotFoundException;
 use PHPUnit\Framework\TestCase;
 

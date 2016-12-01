@@ -1,6 +1,6 @@
 <?php
 
-namespace Miro\Container;
+namespace Miro;
 
 use Miro\Container\Exception\NotFoundException;
 use Psr\Container\ContainerInterface;
